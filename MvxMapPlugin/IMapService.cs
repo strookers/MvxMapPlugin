@@ -8,5 +8,10 @@ namespace MvxMapPlugin
 {
     public interface IMapService
     {
+        bool UpdateCameraPosition();
+
+        bool MarkOnMap();
+
+        bool MakePolyline();
     }
 }

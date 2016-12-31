@@ -1,4 +1,4 @@
-using Mvvmcross.Platform.Plugins;
+using MvvmCross.Platform.Plugins;
 
 namespace MvxMapPlugin.Droid
 {

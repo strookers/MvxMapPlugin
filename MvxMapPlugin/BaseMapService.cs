@@ -8,5 +8,19 @@ namespace MvxMapPlugin
 {
     public class BaseMapService : IMapService
     {
+        public bool MakePolyline()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool MarkOnMap()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateCameraPosition()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
