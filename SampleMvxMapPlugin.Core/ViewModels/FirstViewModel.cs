@@ -12,12 +12,12 @@ namespace SampleMvxMapPlugin.Core.ViewModels
         public FirstViewModel(IMvxMap mvxMap)
         {
             _mvxMap = mvxMap;
-
+            _mvxMap.Test("dette virker");
             //List<LatLngNew> list = new List<LatLngNew>();
             //list.Add(new LatLngNew(57.12804, 9.81766));
             //list.Add(new LatLngNew(56.95621, 9.8204));
             //list.Add(new LatLngNew(56.93898, 10.16098));
-            //_mapService.MakePolyline(list);
+            //_mvxMap.MakePolyline(list);
         }
 
         //private string _hello = "Hello MvvmCross";

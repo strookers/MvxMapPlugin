@@ -8,7 +8,6 @@ using MvvmCross.Platform.Plugins;
 
 namespace MvxMapPlugin
 {
-    [Preserve(AllMembers = true)]
     public class PluginLoader : IMvxPluginLoader
     {
         public static readonly PluginLoader Instance = new PluginLoader();

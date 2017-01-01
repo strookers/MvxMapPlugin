@@ -11,6 +11,8 @@ namespace SampleMvxMapPlugin.Droid.Views
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.FirstView);
+
+            System.Diagnostics.Debug.Write("map id: " + Resource.Id.map.ToString());
         }
     }
 }

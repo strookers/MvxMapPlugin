@@ -23,26 +23,34 @@ namespace MvxMapPlugin.Droid
     [Preserve(AllMembers = true)]
     public class MvxMap : IMvxMap
     {
-        //internal static void Initialize()
-        //    => Mvx.RegisterSingleton<IMvxMap>(new MvxMap());
+        public Activity Activity => Mvx.Resolve<IMvxAndroidCurrentTopActivity>().Activity;
 
-        //private Activity Activity => Mvx.Resolve<IMvxAndroidCurrentTopActivity>().Activity;
+        public GoogleMap _map;
 
-        private GoogleMap _map;
+        //private MvxMap()
+        //{
+        //    System.Diagnostics.Debug.Write("Tester her: ");
+        //    MapFragment mapFragment = Activity.FragmentManager.FindFragmentById<MapFragment>(Activity.Resources.GetIdentifier("map", "id", Activity.PackageName));
+        //    _map = mapFragment.Map;
+        //}
 
-        private MvxMap()
+        public MvxMap()
         {
-            System.Diagnostics.Debug.Write("Tester her: ");
-            //MapFragment mapFragment = Activity.FragmentManager.FindFragmentById<MapFragment>(Activity.Resources.GetIdentifier("map", "id", Activity.PackageName));
-            //_map = mapFragment.Map;
+            System.Diagnostics.Debug.Write("ctor: works");
+
+            MapFragment mapFragment = Activity.FragmentManager.FindFragmentById<MapFragment>(Activity.Resources.GetIdentifier("map", "id", Activity.PackageName));
+            _map = mapFragment.Map;
+
+            System.Diagnostics.Debug.Write("Aktivity title: " + Activity.Title);
         }
 
-        public void NativeUpdateCameraPosition(LatLng pos)
+        public void UpdateCameraPosition(LatLngNew pos)
         {
+            LatLng position = new LatLng(pos.lat, pos.lng);
             try
             {
                 CameraPosition.Builder builder = CameraPosition.InvokeBuilder();
-                builder.Target(pos);
+                builder.Target(position);
                 builder.Zoom(12);
                 builder.Bearing(45);
                 builder.Tilt(10);
@@ -57,13 +65,14 @@ namespace MvxMapPlugin.Droid
             }
         }
 
-        public void NativeMarkOnMap(string title, LatLng pos, string metaText)
+        public void MarkOnMap(string title, LatLngNew pos, string metaText)
         {
+            LatLng position = new LatLng(pos.lat, pos.lng);
                 try
                 {
                     MarkerOptions marker = new MarkerOptions();
                     marker.SetTitle(title);
-                    marker.SetPosition(pos); //Resource.Drawable.BlueDot
+                    marker.SetPosition(position); //Resource.Drawable.BlueDot
                     marker.SetSnippet(metaText);
 
                     _map.AddMarker(marker);
@@ -74,16 +83,6 @@ namespace MvxMapPlugin.Droid
                 }
 
             }
-
-        public void UpdateCameraPosition()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void MarkOnMap()
-        {
-            throw new NotImplementedException();
-        }
 
         public void MakePolyline(List<LatLngNew> locations)
         {
@@ -100,6 +99,11 @@ namespace MvxMapPlugin.Droid
                 polylineoption.Add(latLngPoints);
 
                 _map.AddPolyline(polylineoption);
+        }
+
+        public void Test(string test)
+        {
+            Toast.MakeText(Activity, test, ToastLength.Long).Show();
         }
     }
 }

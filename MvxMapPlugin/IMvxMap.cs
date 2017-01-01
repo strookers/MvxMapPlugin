@@ -9,10 +9,12 @@ namespace MvxMapPlugin
 {
     public interface IMvxMap
     {
-        void UpdateCameraPosition();
+        void UpdateCameraPosition(LatLngNew pos);
 
-        void MarkOnMap();
+        void MarkOnMap(string title, LatLngNew pos, string metaText);
 
         void MakePolyline(List<LatLngNew> locations);
+
+        void Test(string test);
     }
 }

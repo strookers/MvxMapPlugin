@@ -11,17 +11,22 @@ namespace MvxMapPlugin
     {
         protected abstract void NativeMakePolyline(List<LatLngNew> locations);
 
+        public void UpdateCameraPosition(LatLngNew pos)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void MarkOnMap(string title, LatLngNew pos, string metaText)
+        {
+            throw new NotImplementedException();
+        }
+
         public void MakePolyline(List<LatLngNew> locations)
         {
             NativeMakePolyline(locations);
         }
 
-        public void MarkOnMap()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateCameraPosition()
+        public void Test(string test)
         {
             throw new NotImplementedException();
         }

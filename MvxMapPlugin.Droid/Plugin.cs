@@ -1,3 +1,4 @@
+using Android.Runtime;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Plugins;
 
