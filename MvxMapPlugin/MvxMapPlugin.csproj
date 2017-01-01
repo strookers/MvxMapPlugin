@@ -34,9 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BaseMapService.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="IMapService.cs" />
+    <Compile Include="BaseMvxMap.cs" />
+    <Compile Include="IMvxMap.cs" />
+    <Compile Include="Models\LatLngNew.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
