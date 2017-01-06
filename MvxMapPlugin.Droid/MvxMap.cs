@@ -11,7 +11,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-
+using MvvmCross.Droid.Views;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Droid.Platform;
 
@@ -26,6 +26,7 @@ namespace MvxMapPlugin.Droid
         public Activity Activity => Mvx.Resolve<IMvxAndroidCurrentTopActivity>().Activity;
 
         public GoogleMap _map;
+        public MapFragment mapFragment;
 
         //private MvxMap()
         //{
@@ -34,12 +35,27 @@ namespace MvxMapPlugin.Droid
         //    _map = mapFragment.Map;
         //}
 
+
+
         public MvxMap()
         {
             System.Diagnostics.Debug.Write("ctor: works");
-
-            MapFragment mapFragment = Activity.FragmentManager.FindFragmentById<MapFragment>(Activity.Resources.GetIdentifier("map", "id", Activity.PackageName));
-            _map = mapFragment.Map;
+            mapFragment = Activity.FragmentManager.FindFragmentById<MapFragment>(Activity.Resources.GetIdentifier("map", "id", Activity.PackageName));
+            
+            try
+            {
+                if (mapFragment == null)
+                {
+                    System.Diagnostics.Debug.Write("Den er null: " + Activity.Resources.GetIdentifier("map", "id", Activity.PackageName));
+                }
+                System.Diagnostics.Debug.Write("");
+                _map = mapFragment.Map;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.Write("MvxMap ctor Exception: " + e.Message);
+            }
+            
 
             System.Diagnostics.Debug.Write("Aktivity title: " + Activity.Title);
         }
@@ -103,6 +119,15 @@ namespace MvxMapPlugin.Droid
 
         public void Test(string test)
         {
+            try
+            {
+                Button b = Activity.FindViewById<Button>(Activity.Resources.GetIdentifier("but_left", "id", Activity.PackageName));
+                b.Text = "tester";
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.Write("Button fejl: " + e.Message);
+            }
             Toast.MakeText(Activity, test, ToastLength.Long).Show();
         }
     }

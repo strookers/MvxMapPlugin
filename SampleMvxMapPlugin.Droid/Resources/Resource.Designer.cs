@@ -391,6 +391,12 @@ namespace SampleMvxMapPlugin.Droid
 			// aapt resource value: 0x7f07000c
 			public const int auto = 2131165196;
 			
+			// aapt resource value: 0x7f070011
+			public const int but_left = 2131165201;
+			
+			// aapt resource value: 0x7f070012
+			public const int but_right = 2131165202;
+			
 			// aapt resource value: 0x7f07000d
 			public const int dark = 2131165197;
 			
@@ -399,6 +405,9 @@ namespace SampleMvxMapPlugin.Droid
 			
 			// aapt resource value: 0x7f070009
 			public const int icon_only = 2131165193;
+			
+			// aapt resource value: 0x7f070010
+			public const int layout_bottom = 2131165200;
 			
 			// aapt resource value: 0x7f07000e
 			public const int light = 2131165198;
